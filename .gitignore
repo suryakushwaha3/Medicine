@@ -1,0 +1,5 @@
+my_medicalshop.db
+__pycache__/
+*.pyc
+.venv/
+venv/
