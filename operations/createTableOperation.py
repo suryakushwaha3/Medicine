@@ -20,7 +20,7 @@ def createtable():
             block BOOLEAN,
             name VARCHAR(255),
             address VARCHAR(255),
-            email VARCHAR(255),
+            email VARCHAR(255) UNIQUE,
             phone_number VARCHAR(255),
             pincode VARCHAR(255)
         )
