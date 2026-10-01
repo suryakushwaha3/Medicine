@@ -13,7 +13,8 @@ def update_user(userID, **fields):
         "address",
         "email",
         "phone_number",
-        "pincode"
+        "pincode",
+        "isApproved"
     }
 
     # Sirf allowed fields ko select karo
