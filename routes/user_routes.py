@@ -103,7 +103,9 @@ def user_routes(app):
                 'address',
                 'email',
                 'phone_number',
-                'pincode'
+                'pincode',
+                'isApproved',
+                'block'
             ]
 
             for field in allowed_fields:

@@ -94,6 +94,23 @@ def createtable():
         )
     ''')
 
+    #Notifications table for storing the notifications
+
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Notifications(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title VARCHAR(255) NOT NULL,
+            message VARCHAR(1000) NOT NULL,
+            type VARCHAR(100) NOT NULL,
+            is_read BOOLEAN DEFAULT 0,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+
+ 
+  
+    print("Notifications table created successfully.")
+
 
     conn.commit()
     conn.close()
