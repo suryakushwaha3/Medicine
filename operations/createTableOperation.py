@@ -113,5 +113,31 @@ def createtable():
     print("Notifications table created successfully.")
 
 
+    # This table is for storing home screen posters
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Posters(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            poster_name VARCHAR(255),
+            poster_image VARCHAR(500),
+            is_active BOOLEAN DEFAULT 1,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+
+
+
+    # This table is for storing medicine categories
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Categories(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            category_name VARCHAR(255) UNIQUE,
+            category_image VARCHAR(500),
+            is_active BOOLEAN DEFAULT 1,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+ 
+
+
     conn.commit()
     conn.close()
