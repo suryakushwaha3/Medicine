@@ -35,7 +35,8 @@ def createtable():
             product_id VARCHAR(255),
             product_name VARCHAR(255),
             category VARCHAR(255),
-            stock INTEGER
+            stock INTEGER,
+            product_image VARCHAR(500)
         )
     ''')
 

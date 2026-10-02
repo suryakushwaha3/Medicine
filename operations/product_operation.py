@@ -1,21 +1,35 @@
 import sqlite3
 
 
-def add_product(product_id, product_name, category, stock):
+# Add Product
+def add_product(
+    product_id,
+    product_name,
+    category,
+    stock,
+    product_image
+):
     conn = sqlite3.connect("my_medicalshop.db")
     cursor = conn.cursor()
 
     cursor.execute(
         """
         INSERT INTO Products
-        (product_id, product_name, category, stock)
-        VALUES (?, ?, ?, ?)
+        (
+            product_id,
+            product_name,
+            category,
+            stock,
+            product_image
+        )
+        VALUES (?, ?, ?, ?, ?)
         """,
         (
             product_id,
             product_name,
             category,
-            stock
+            stock,
+            product_image
         )
     )
 
@@ -27,12 +41,22 @@ def add_product(product_id, product_name, category, stock):
     }
 
 
+# Get Products
 def get_products():
     conn = sqlite3.connect("my_medicalshop.db")
     cursor = conn.cursor()
 
     cursor.execute(
-        "SELECT * FROM Products"
+        """
+        SELECT
+            id,
+            product_id,
+            product_name,
+            category,
+            stock,
+            product_image
+        FROM Products
+        """
     )
 
     products = cursor.fetchall()
@@ -42,7 +66,14 @@ def get_products():
     return products
 
 
-def update_product(product_id, product_name, category, stock):
+# Update Product
+def update_product(
+    product_id,
+    product_name,
+    category,
+    stock,
+    product_image
+):
     conn = sqlite3.connect("my_medicalshop.db")
     cursor = conn.cursor()
 
@@ -52,13 +83,15 @@ def update_product(product_id, product_name, category, stock):
         SET
             product_name = ?,
             category = ?,
-            stock = ?
+            stock = ?,
+            product_image = ?
         WHERE product_id = ?
         """,
         (
             product_name,
             category,
             stock,
+            product_image,
             product_id
         )
     )
@@ -71,12 +104,16 @@ def update_product(product_id, product_name, category, stock):
     }
 
 
+# Delete Product
 def delete_product(product_id):
     conn = sqlite3.connect("my_medicalshop.db")
     cursor = conn.cursor()
 
     cursor.execute(
-        "DELETE FROM Products WHERE product_id = ?",
+        """
+        DELETE FROM Products
+        WHERE product_id = ?
+        """,
         (product_id,)
     )
 
